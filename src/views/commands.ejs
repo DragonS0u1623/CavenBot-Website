@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CavenBot Commands</title>
+
+        <!-- CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    </head>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+        <div>
+            <h1>Commands</h1>
+            <p>
+                For all of these commands, by default the prefix is going to be
+                <code><%= prefix %></code>.<br>Commands with arguments are formatted
+                as following: <br><code>&lt;arg&gt;</code> - These are optional
+                arguments<br>
+                <code>[arg]</code> - These are required arguments
+            </p>
+            <h2>Actions</h2>
+            <% commands.groups.actions.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+            <% }) %>
+            <h2>Anonymous Messages</h2>
+            <% commands.groups.anon.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+            <% }) %>
+            <h2>Language</h2>
+            <% commands.groups.language.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+            <h2>Misc</h2>
+            <% commands.groups.misc.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+            <h2>Moderation</h2>
+            <% commands.groups.moderation.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+            <h2>Music</h2>
+            <% commands.groups.music.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+            <h2>Reminders</h2>
+            <% commands.groups.reminders.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+            <h2>Roles</h2>
+            <% commands.groups.roles.commands.forEach(command => { %>
+                <h3><%= command.name %></h3>
+                <p><%= command.description %></p>
+                <% if (command.aliases) { %>
+                    <p>Aliases: <code><%= command.aliases %></code></p>
+                <% } %>
+                <% if (command.subcommands) { %>
+                    <% command.subcommands.forEach(subcommand => { %>
+                        <h4><%= subcommand.name %></h4>
+                        <p><%= subcommand.description %></p>
+                        <p>Usage: <code><%= prefix %><%= subcommand.usage %></code></p>
+                    <% }) %>
+                <% } else { %>
+                    <p>Usage: <code><%= prefix %><%= command.usage %></code></p>
+                <% } %>
+            <% }) %>
+        </div>
+
+        <%- include('./partials/scripts.ejs') %>
+    </body>
+</html>
